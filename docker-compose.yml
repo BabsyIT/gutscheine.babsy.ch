@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: babsy-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-babsy}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-babsy_password}
+      POSTGRES_DB: ${POSTGRES_DB:-babsy_vouchers}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-babsy}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - babsy-network
+
+  # Next.js Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: babsy-app
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # Database
+      DATABASE_URL: postgresql://${POSTGRES_USER:-babsy}:${POSTGRES_PASSWORD:-babsy_password}@postgres:5432/${POSTGRES_DB:-babsy_vouchers}?schema=public
+
+      # NextAuth
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
+
+      # OAuth Providers
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET}
+
+      # App Settings
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+
+      # Run seed on first startup (set to "true" for first run)
+      RUN_SEED: ${RUN_SEED:-false}
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    networks:
+      - babsy-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/categories"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  babsy-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

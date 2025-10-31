@@ -33,15 +33,37 @@ Eine moderne Web-Plattform für digitale Gutscheine, die es Partnern ermöglicht
 
 ## Installation
 
-### Voraussetzungen
+Es gibt zwei Möglichkeiten, die Plattform zu installieren:
+
+### Option 1: Docker (Empfohlen) 🐳
+
+Die einfachste Methode zum Starten der Anwendung:
+
+```bash
+# 1. Umgebungsvariablen konfigurieren
+cp .env.docker .env
+# Bearbeite .env und füge OAuth-Credentials ein
+
+# 2. Container starten
+docker compose up -d
+
+# 3. Anwendung ist verfügbar unter http://localhost:3000
+```
+
+Detaillierte Docker-Anleitung: Siehe [DOCKER.md](DOCKER.md)
+
+### Option 2: Lokale Installation
+
+#### Voraussetzungen
 
 - Node.js 18+ und npm
 - PostgreSQL Datenbank
 - OAuth-Credentials (Google und/oder GitHub)
 
-### Setup
+#### Setup
 
 1. Repository klonen
+
 2. Dependencies installieren:
 ```bash
 npm install
@@ -50,12 +72,14 @@ npm install
 3. Umgebungsvariablen konfigurieren:
 ```bash
 cp .env.example .env
+# Bearbeite .env und füge Datenbank-URL und OAuth-Credentials ein
 ```
 
 4. Datenbank Setup und Migrations:
 ```bash
 npx prisma migrate dev --name init
 npx prisma generate
+npx prisma db seed
 ```
 
 5. Development Server starten:
