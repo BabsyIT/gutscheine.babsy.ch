@@ -1,5 +1,11 @@
 # Babsy Gutschein-Plattform
 
+[![Docker Build](https://github.com/<username>/gutscheine.babsy.ch/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/<username>/gutscheine.babsy.ch/actions/workflows/docker-publish.yml)
+[![License](https://img.shields.io/badge/license-Proprietary-blue.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-16.0-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)
+
 Eine moderne Web-Plattform für digitale Gutscheine, die es Partnern ermöglicht, Angebote zu erstellen und Kunden diese einzulösen.
 
 ## Features
@@ -33,11 +39,28 @@ Eine moderne Web-Plattform für digitale Gutscheine, die es Partnern ermöglicht
 
 ## Installation
 
-Es gibt zwei Möglichkeiten, die Plattform zu installieren:
+Es gibt drei Möglichkeiten, die Plattform zu installieren:
 
-### Option 1: Docker (Empfohlen) 🐳
+### Option 1: GHCR (Production-Ready) 🚀
 
-Die einfachste Methode zum Starten der Anwendung:
+Verwende vorgebaute Images von GitHub Container Registry:
+
+```bash
+# 1. Umgebungsvariablen konfigurieren
+cp .env.docker .env
+# Bearbeite .env und füge OAuth-Credentials ein
+
+# 2. Container mit GHCR Image starten
+docker compose -f docker-compose.ghcr.yml up -d
+
+# 3. Anwendung ist verfügbar unter http://localhost:3000
+```
+
+Detaillierte GHCR-Anleitung: Siehe [GHCR.md](GHCR.md)
+
+### Option 2: Docker (Lokales Build) 🐳
+
+Baue Images lokal:
 
 ```bash
 # 1. Umgebungsvariablen konfigurieren
@@ -52,7 +75,7 @@ docker compose up -d
 
 Detaillierte Docker-Anleitung: Siehe [DOCKER.md](DOCKER.md)
 
-### Option 2: Lokale Installation
+### Option 3: Lokale Installation
 
 #### Voraussetzungen
 
