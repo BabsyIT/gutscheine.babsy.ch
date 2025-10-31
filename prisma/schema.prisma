@@ -15,16 +15,23 @@ datasource db {
 
 // User model for authentication
 model User {
-  id            String    @id @default(cuid())
+  id            String       @id @default(cuid())
   name          String?
-  email         String    @unique
+  email         String       @unique
   emailVerified DateTime?
   image         String?
-  role          UserRole  @default(USER)
+  role          UserRole     @default(USER)
+  authMethod    AuthMethod   @default(OAUTH)
+
+  // Babsy App API integration
+  babsyUserId   String?      @unique
+  babsyUserType BabsyUserType?
+
   accounts      Account[]
   sessions      Session[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  otpTokens     OtpToken[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
 
   // Relations
   partner       Partner?
@@ -32,9 +39,23 @@ model User {
 }
 
 enum UserRole {
-  USER
+  USER         // Regular users (sitters, parents)
+  PARTNER      // Business partners
+  ADMIN        // Babsy employees
+}
+
+enum AuthMethod {
+  OAUTH        // Google, GitHub (legacy)
+  ENTRA_ID     // Microsoft Entra ID (Azure AD) for employees
+  BABSY_APP    // Babsy App API for sitters/parents
+  OTP          // Email OTP for partners
+}
+
+enum BabsyUserType {
+  SITTER
+  PARENT
   PARTNER
-  ADMIN
+  MEMBER
 }
 
 // OAuth Account model (NextAuth)
@@ -158,4 +179,21 @@ model VoucherRedemption {
 
   @@index([voucherId])
   @@index([userId])
+}
+
+// OTP Token model for email-based authentication
+model OtpToken {
+  id        String   @id @default(cuid())
+  userId    String
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([email])
+  @@index([token])
+  @@index([expiresAt])
 }
