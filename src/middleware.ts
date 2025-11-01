@@ -8,7 +8,7 @@ import type { NextRequest } from 'next/server';
 const intlMiddleware = createMiddleware({
   locales,
   defaultLocale: 'de',
-  localePrefix: 'as-needed'
+  localePrefix: 'always'
 });
 
 // Combine auth and i18n middleware
