@@ -1,0 +1,155 @@
+{
+  "common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolgreich",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "create": "Erstellen",
+    "search": "Suchen",
+    "filter": "Filtern",
+    "close": "Schliessen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "submit": "Absenden",
+    "confirm": "Bestätigen"
+  },
+  "nav": {
+    "home": "Startseite",
+    "vouchers": "Gutscheine",
+    "categories": "Kategorien",
+    "partners": "Partner",
+    "admin": "Admin",
+    "signOut": "Abmelden",
+    "signIn": "Anmelden"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Bei Babsy Gutscheine anmelden",
+      "subtitle": "Wählen Sie Ihre Anmeldemethode",
+      "methods": {
+        "employee": {
+          "title": "Babsy Mitarbeiter",
+          "description": "Anmeldung mit Microsoft Entra ID",
+          "button": "Mit Microsoft anmelden"
+        },
+        "user": {
+          "title": "Sitter & Eltern",
+          "description": "Anmeldung mit Babsy App",
+          "button": "Mit Babsy App anmelden",
+          "tokenPlaceholder": "Geben Sie Ihren Babsy App Token ein"
+        },
+        "partner": {
+          "title": "Geschäftspartner",
+          "description": "Anmeldung mit E-Mail-Code",
+          "button": "Code anfordern",
+          "verifyButton": "Code verifizieren",
+          "emailPlaceholder": "ihre@geschaefts-email.com",
+          "codePlaceholder": "6-stelliger Code",
+          "codeSent": "Code wurde an {email} gesendet",
+          "invalidDomain": "Bitte verwenden Sie eine Geschäfts-E-Mail-Adresse"
+        }
+      },
+      "error": {
+        "title": "Anmeldefehler",
+        "default": "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+        "invalidCredentials": "Ungültige Anmeldedaten",
+        "accessDenied": "Zugriff verweigert"
+      }
+    }
+  },
+  "vouchers": {
+    "title": "Gutscheine",
+    "myVouchers": "Meine Gutscheine",
+    "available": "Verfügbare Gutscheine",
+    "redeemed": "Eingelöste Gutscheine",
+    "expired": "Abgelaufene Gutscheine",
+    "create": "Gutschein erstellen",
+    "details": "Gutschein Details",
+    "redeem": "Einlösen",
+    "redeemSuccess": "Gutschein erfolgreich eingelöst",
+    "redeemError": "Fehler beim Einlösen des Gutscheins",
+    "validFrom": "Gültig ab",
+    "validUntil": "Gültig bis",
+    "unlimited": "Unbegrenzt",
+    "redemptions": "{used} von {max} verwendet",
+    "redemptionsUnlimited": "{used} mal verwendet",
+    "qrCode": "QR-Code",
+    "downloadQR": "QR-Code herunterladen",
+    "terms": "Bedingungen",
+    "category": "Kategorie",
+    "partner": "Partner",
+    "value": "Wert",
+    "discount": "Rabatt",
+    "noVouchers": "Keine Gutscheine verfügbar",
+    "form": {
+      "title": "Titel",
+      "description": "Beschreibung",
+      "terms": "Nutzungsbedingungen",
+      "value": "Wert (CHF)",
+      "discount": "Rabatt (%)",
+      "maxRedemptions": "Max. Einlösungen",
+      "validFrom": "Gültig ab",
+      "validUntil": "Gültig bis",
+      "category": "Kategorie auswählen",
+      "image": "Bild-URL",
+      "submit": "Gutschein erstellen",
+      "update": "Gutschein aktualisieren"
+    }
+  },
+  "partners": {
+    "title": "Partner",
+    "myProfile": "Mein Profil",
+    "allPartners": "Alle Partner",
+    "pending": "Ausstehend",
+    "approved": "Genehmigt",
+    "create": "Partner werden",
+    "details": "Partner Details",
+    "businessName": "Firmenname",
+    "description": "Beschreibung",
+    "address": "Adresse",
+    "phone": "Telefon",
+    "website": "Webseite",
+    "logo": "Logo",
+    "status": "Status",
+    "approvalPending": "Genehmigung ausstehend",
+    "approvalApproved": "Genehmigt",
+    "noPartners": "Keine Partner verfügbar",
+    "form": {
+      "businessName": "Firmenname",
+      "description": "Beschreibung",
+      "address": "Adresse",
+      "phone": "Telefonnummer",
+      "website": "Webseite",
+      "logo": "Logo-URL",
+      "submit": "Partner-Antrag senden",
+      "update": "Profil aktualisieren"
+    }
+  },
+  "categories": {
+    "title": "Kategorien",
+    "all": "Alle Kategorien",
+    "create": "Kategorie erstellen",
+    "noCategories": "Keine Kategorien verfügbar",
+    "form": {
+      "name": "Name",
+      "slug": "Slug",
+      "description": "Beschreibung",
+      "icon": "Icon",
+      "submit": "Kategorie erstellen",
+      "update": "Kategorie aktualisieren"
+    }
+  },
+  "admin": {
+    "title": "Administration",
+    "dashboard": "Dashboard",
+    "users": "Benutzer",
+    "pendingPartners": "Ausstehende Partner",
+    "statistics": "Statistiken",
+    "approvePartner": "Partner genehmigen",
+    "rejectPartner": "Partner ablehnen"
+  }
+}

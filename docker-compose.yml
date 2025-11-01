@@ -24,11 +24,10 @@ services:
 
   # Next.js Application
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/babsyit/gutscheine.babsy.ch:latest
     container_name: babsy-app
     restart: unless-stopped
+    pull_policy: always
     depends_on:
       postgres:
         condition: service_healthy
@@ -40,11 +39,20 @@ services:
       NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
       NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
 
-      # OAuth Providers
-      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
-      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
-      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID}
-      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET}
+      # Azure AD / Entra ID (for Babsy employees)
+      AZURE_AD_CLIENT_ID: ${AZURE_AD_CLIENT_ID}
+      AZURE_AD_CLIENT_SECRET: ${AZURE_AD_CLIENT_SECRET}
+      AZURE_AD_TENANT_ID: ${AZURE_AD_TENANT_ID}
+
+      # Babsy App API (for sitters/parents)
+      BABSY_APP_API_URL: ${BABSY_APP_API_URL:-https://api.babsy.ch/v1}
+      BABSY_APP_API_KEY: ${BABSY_APP_API_KEY}
+
+      # Exchange Online (for OTP emails)
+      EXCHANGE_USER: ${EXCHANGE_USER:-noreply@babsy.ch}
+      EXCHANGE_CLIENT_ID: ${EXCHANGE_CLIENT_ID}
+      EXCHANGE_CLIENT_SECRET: ${EXCHANGE_CLIENT_SECRET}
+      EXCHANGE_REFRESH_TOKEN: ${EXCHANGE_REFRESH_TOKEN}
 
       # App Settings
       NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}

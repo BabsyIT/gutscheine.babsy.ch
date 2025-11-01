@@ -1,17 +1,32 @@
 import { auth } from "@/auth"
+import createMiddleware from 'next-intl/middleware';
 import { NextResponse } from "next/server"
+import { locales } from './i18n';
+import type { NextRequest } from 'next/server';
 
+// Create the i18n middleware
+const intlMiddleware = createMiddleware({
+  locales,
+  defaultLocale: 'de',
+  localePrefix: 'as-needed'
+});
+
+// Combine auth and i18n middleware
 export default auth((req) => {
   const { pathname } = req.nextUrl
   const isLoggedIn = !!req.auth
 
+  // Remove locale prefix for route checking
+  const pathnameWithoutLocale = pathname.replace(/^\/(de|en)/, '') || '/'
+
   // Protected routes
-  const isPartnerRoute = pathname.startsWith('/partner')
-  const isAdminRoute = pathname.startsWith('/admin')
+  const isPartnerRoute = pathnameWithoutLocale.startsWith('/partner')
+  const isAdminRoute = pathnameWithoutLocale.startsWith('/admin')
 
   // Redirect to signin if not authenticated
   if ((isPartnerRoute || isAdminRoute) && !isLoggedIn) {
-    return NextResponse.redirect(new URL('/auth/signin', req.url))
+    const locale = pathname.startsWith('/de') ? '/de' : pathname.startsWith('/en') ? '/en' : ''
+    return NextResponse.redirect(new URL(`${locale}/auth/signin`, req.url))
   }
 
   // Check roles
@@ -23,9 +38,10 @@ export default auth((req) => {
     return NextResponse.redirect(new URL('/', req.url))
   }
 
-  return NextResponse.next()
+  // Apply i18n middleware
+  return intlMiddleware(req as NextRequest)
 })
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/', '/(de|en)/:path*', '/((?!api|_next|_vercel|.*\\..*).*)'],
 }

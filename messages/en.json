@@ -1,0 +1,155 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "confirm": "Confirm"
+  },
+  "nav": {
+    "home": "Home",
+    "vouchers": "Vouchers",
+    "categories": "Categories",
+    "partners": "Partners",
+    "admin": "Admin",
+    "signOut": "Sign Out",
+    "signIn": "Sign In"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign in to Babsy Vouchers",
+      "subtitle": "Choose your sign-in method",
+      "methods": {
+        "employee": {
+          "title": "Babsy Employee",
+          "description": "Sign in with Microsoft Entra ID",
+          "button": "Sign in with Microsoft"
+        },
+        "user": {
+          "title": "Sitters & Parents",
+          "description": "Sign in with Babsy App",
+          "button": "Sign in with Babsy App",
+          "tokenPlaceholder": "Enter your Babsy App token"
+        },
+        "partner": {
+          "title": "Business Partner",
+          "description": "Sign in with email code",
+          "button": "Request Code",
+          "verifyButton": "Verify Code",
+          "emailPlaceholder": "your@business-email.com",
+          "codePlaceholder": "6-digit code",
+          "codeSent": "Code sent to {email}",
+          "invalidDomain": "Please use a business email address"
+        }
+      },
+      "error": {
+        "title": "Sign-in Error",
+        "default": "An error occurred. Please try again.",
+        "invalidCredentials": "Invalid credentials",
+        "accessDenied": "Access denied"
+      }
+    }
+  },
+  "vouchers": {
+    "title": "Vouchers",
+    "myVouchers": "My Vouchers",
+    "available": "Available Vouchers",
+    "redeemed": "Redeemed Vouchers",
+    "expired": "Expired Vouchers",
+    "create": "Create Voucher",
+    "details": "Voucher Details",
+    "redeem": "Redeem",
+    "redeemSuccess": "Voucher redeemed successfully",
+    "redeemError": "Error redeeming voucher",
+    "validFrom": "Valid from",
+    "validUntil": "Valid until",
+    "unlimited": "Unlimited",
+    "redemptions": "{used} of {max} used",
+    "redemptionsUnlimited": "{used} times used",
+    "qrCode": "QR Code",
+    "downloadQR": "Download QR Code",
+    "terms": "Terms",
+    "category": "Category",
+    "partner": "Partner",
+    "value": "Value",
+    "discount": "Discount",
+    "noVouchers": "No vouchers available",
+    "form": {
+      "title": "Title",
+      "description": "Description",
+      "terms": "Terms of use",
+      "value": "Value (CHF)",
+      "discount": "Discount (%)",
+      "maxRedemptions": "Max. redemptions",
+      "validFrom": "Valid from",
+      "validUntil": "Valid until",
+      "category": "Select category",
+      "image": "Image URL",
+      "submit": "Create Voucher",
+      "update": "Update Voucher"
+    }
+  },
+  "partners": {
+    "title": "Partners",
+    "myProfile": "My Profile",
+    "allPartners": "All Partners",
+    "pending": "Pending",
+    "approved": "Approved",
+    "create": "Become a Partner",
+    "details": "Partner Details",
+    "businessName": "Business Name",
+    "description": "Description",
+    "address": "Address",
+    "phone": "Phone",
+    "website": "Website",
+    "logo": "Logo",
+    "status": "Status",
+    "approvalPending": "Approval pending",
+    "approvalApproved": "Approved",
+    "noPartners": "No partners available",
+    "form": {
+      "businessName": "Business Name",
+      "description": "Description",
+      "address": "Address",
+      "phone": "Phone Number",
+      "website": "Website",
+      "logo": "Logo URL",
+      "submit": "Submit Partner Application",
+      "update": "Update Profile"
+    }
+  },
+  "categories": {
+    "title": "Categories",
+    "all": "All Categories",
+    "create": "Create Category",
+    "noCategories": "No categories available",
+    "form": {
+      "name": "Name",
+      "slug": "Slug",
+      "description": "Description",
+      "icon": "Icon",
+      "submit": "Create Category",
+      "update": "Update Category"
+    }
+  },
+  "admin": {
+    "title": "Administration",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "pendingPartners": "Pending Partners",
+    "statistics": "Statistics",
+    "approvePartner": "Approve Partner",
+    "rejectPartner": "Reject Partner"
+  }
+}
